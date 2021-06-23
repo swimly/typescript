@@ -3,12 +3,29 @@ import resolve from 'rollup-plugin-node-resolve'
 import postcss from 'rollup-plugin-postcss'
 import {terser} from 'rollup-plugin-terser'
 import typescript from 'rollup-plugin-typescript2'
-const postcssConfig = require('./postcss.config')
+let postcssConfig = require('./postcss.config')
 import pug from 'rollup-plugin-pug'
 import pkg from './package.json'
+import preImport from 'postcss-prepend-imports'
+import cssnano from 'cssnano'
 
 const env = process.env.ENV
-console.log(env)
+const isDev = env === 'development'
+
+console.log(isDev)
+
+if (!isDev) {
+  postcssConfig.plugins.push(cssnano())
+}
+
+postcssConfig.plugins.forEach((plugin, i) => {
+  if (plugin.postcssPlugin === 'postcss-prepend-imports') {
+    postcssConfig.plugins[i] = preImport({
+      path: `./src/themes/${pkg.theme}`,
+      files: ['variable.css']
+    })
+  }
+})
 
 export default {
   input: './index.ts',
@@ -26,7 +43,7 @@ export default {
       extract: true,
       plugins: postcssConfig.plugins
     }),
-    terser()
+    !isDev && terser()
   ],
   external: [
     'vue'

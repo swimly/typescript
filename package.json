@@ -9,8 +9,11 @@
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
+  "theme": "red",
   "keywords": [],
-  "extra": ["toast"],
+  "extra": [
+    "toast"
+  ],
   "author": "",
   "license": "ISC",
   "devDependencies": {
@@ -21,6 +24,7 @@
     "@storybook/html": "^6.3.0",
     "babel-loader": "^8.2.2",
     "cross-env": "^7.0.3",
+    "cssnano": "^5.0.6",
     "postcss": "^8.3.5",
     "postcss-functions": "^4.0.2",
     "postcss-import": "^14.0.2",
