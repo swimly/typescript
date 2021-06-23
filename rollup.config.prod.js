@@ -26,7 +26,7 @@ export default () => {
       format: 'umd',
       name
     }]
-    console.log(pkg.extra, 'name')
+    console.log(pkg.extra.indexOf(name))
     if (pkg.extra.indexOf(name) >= 0) {
       con.plugins = [...config.plugins, [
         postcss({
@@ -34,7 +34,6 @@ export default () => {
           plugins: postcssConfig.plugins
         })
       ]]
-      console.log(con.plugins)
     }
     configs.push(con)
   })
