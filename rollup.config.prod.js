@@ -5,7 +5,7 @@ const postcssConfig = require('./postcss.config')
 import fs from 'fs'
 
 function getComponents (root) {
-  let arr = []
+  let arr = [pkg.name]
   fs.readdirSync(root).map(file => {
     arr.push(file)
   })
@@ -20,21 +20,25 @@ export default () => {
     for (const key in config) {
       con[key] = config[key]
     }
-    con.input = `./src/components/${name}/${name}.ts`
+    const isMain = name === pkg.name
+    con.input = isMain ? `./index.ts` : `./src/components/${name}/${name}.ts`
     con.output = [{
-      file: `src/components/${name}/dist/${name}.min.js`,
+      file: isMain ? `dist/${name}.min.js` : `src/components/${name}/dist/${name}.min.js`,
       format: 'umd',
       name
     }]
-    console.log(pkg.extra.indexOf(name))
-    if (pkg.extra.indexOf(name) >= 0) {
-      con.plugins = [...config.plugins, [
-        postcss({
+    let p = []
+    con.plugins.forEach((plugin, i) => {
+      if (plugin.name === 'postcss' && pkg.extra.indexOf(name) >= 0) {
+        p[i] = postcss({
           extract: false,
           plugins: postcssConfig.plugins
         })
-      ]]
-    }
+      } else {
+        p[i] = plugin
+      }
+    })
+    con.plugins = p
     configs.push(con)
   })
   return configs

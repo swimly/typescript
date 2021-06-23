@@ -1,3 +1,21 @@
+.m-toast{
+  background-color: rgba(0,0,0,0.8);
+  display:inline-block;
+  height: 1.6rem;
+  padding:0 0.6rem;
+  color: #fff;
+}
+  .m-toast::before{
+    content:"";
+    display:inline-block;
+    width:0;
+    height:100%;
+    vertical-align: middle;
+  }
+  .m-toast-label{
+    display:inline-block;
+    vertical-align: middle;
+  }
 .m-button{
   display:inline-flex;
   flex-direction: row;

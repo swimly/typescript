@@ -13,7 +13,7 @@ console.log(env)
 export default {
   input: './index.ts',
   output: [{
-    file: `dist/${pkg.name}.min.js`,
+    file: `dist/${pkg.name}.js`,
     format: 'umd',
     name: pkg.name
   }],
