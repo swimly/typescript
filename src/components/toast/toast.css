@@ -1,0 +1,18 @@
+.m-toast{
+  background-color: rgba(0,0,0,0.8);
+  display:inline-block;
+  height: 32px;
+  padding:0 12px;
+  color: #fff;
+  &::before{
+    content:"";
+    display:inline-block;
+    width:0;
+    height:100%;
+    vertical-align: middle;
+  }
+  &-label{
+    display:inline-block;
+    vertical-align: middle;
+  }
+}
