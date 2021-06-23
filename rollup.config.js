@@ -2,13 +2,13 @@ import json from 'rollup-plugin-json'
 import resolve from 'rollup-plugin-node-resolve'
 import postcss from 'rollup-plugin-postcss'
 import {terser} from 'rollup-plugin-terser'
-import vue from 'rollup-plugin-vue'
+import typescript from 'rollup-plugin-typescript2'
 const postcssConfig = require('./postcss.config')
 import pkg from './package.json'
 
 
 export default {
-  input: './index.js',
+  input: './index.ts',
   output: [{
     file: `dist/${pkg.name}.min.js`,
     format: 'umd',
@@ -17,10 +17,7 @@ export default {
   plugins: [
     json(),
     resolve(),
-    vue({
-      compileTemplate: true,
-      preprocessStyles: true
-    }),
+    typescript(),
     postcss({
       extract: true,
       plugins: postcssConfig.plugins
