@@ -8,7 +8,13 @@
     "build": "cross-env ENV=producrion rollup -c rollup.config.prod.js",
     "doc": "start-storybook -p 6006",
     "build:doc": "build-storybook",
-    "plop": "plop"
+    "plop": "plop",
+    "push:gitee": "git push gitee master",
+    "push:github": "git push github master",
+    "pull:gitee": "git pull gitee master",
+    "pull:github": "git pull github master",
+    "push": "concurrently \"yarn push:github\" \"yarn push:gitee\"",
+    "pull": "concurrently \"yarn pull:github\" \"yarn pull:gitee\""
   },
   "theme": "red",
   "var": true,
@@ -31,6 +37,7 @@
     "@storybook/html": "^6.3.0",
     "autoprefixer": "^10.2.6",
     "babel-loader": "^8.2.2",
+    "concurrently": "^6.2.0",
     "cross-env": "^7.0.3",
     "cssnano": "^5.0.6",
     "plop": "^2.7.4",
