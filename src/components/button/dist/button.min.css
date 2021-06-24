@@ -1,2 +1,0 @@
-.m-toast{background-color:rgba(0,0,0,.8);color:#fff;display:inline-block;height:1.6rem;padding:0 .6rem}.m-toast:before{content:"";height:100%;width:0}.m-toast-label,.m-toast:before{display:inline-block;vertical-align:middle}
-.m-button{align-items:center;background:red;border:1px solid red;color:#fff;cursor:pointer;display:inline-flex;flex-direction:row;font-size:.7rem;height:1.6rem;justify-content:center;padding:0 .6rem}.m-button-label:empty{display:none}

@@ -11,9 +11,6 @@ import cssnano from 'cssnano'
 
 const env = process.env.ENV
 const isDev = env === 'development'
-
-console.log(isDev)
-
 if (!isDev) {
   postcssConfig.plugins.push(cssnano())
 }

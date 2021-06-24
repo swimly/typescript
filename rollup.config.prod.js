@@ -2,6 +2,7 @@ import config from './rollup.config'
 import pkg from './package.json'
 import postcss from 'rollup-plugin-postcss'
 const postcssConfig = require('./postcss.config')
+import postcssModule from 'postcss-modules'
 import fs from 'fs'
 
 function getComponents (root) {
@@ -32,7 +33,11 @@ export default () => {
       if (plugin.name === 'postcss' && pkg.extra.indexOf(name) >= 0) {
         p[i] = postcss({
           extract: false,
-          plugins: postcssConfig.plugins
+          plugins: postcssConfig.plugins.concat([
+            postcssModule({
+              generateScopedName: "[local]__[hash:base64:5]"
+            })
+          ])
         })
       } else {
         p[i] = plugin

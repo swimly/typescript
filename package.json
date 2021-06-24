@@ -6,10 +6,17 @@
   "scripts": {
     "dev": "cross-env ENV=development rollup -c",
     "build": "cross-env ENV=producrion rollup -c rollup.config.prod.js",
-    "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "doc": "start-storybook -p 6006",
+    "build:doc": "build-storybook",
+    "plop": "plop"
   },
   "theme": "red",
+  "var": true,
+  "browserslist": [
+    "last 2 version",
+    ">1%",
+    "ios 7"
+  ],
   "keywords": [],
   "extra": [
     "toast"
@@ -22,9 +29,11 @@
     "@storybook/addon-essentials": "^6.3.0",
     "@storybook/addon-links": "^6.3.0",
     "@storybook/html": "^6.3.0",
+    "autoprefixer": "^10.2.6",
     "babel-loader": "^8.2.2",
     "cross-env": "^7.0.3",
     "cssnano": "^5.0.6",
+    "plop": "^2.7.4",
     "postcss": "^8.3.5",
     "postcss-functions": "^4.0.2",
     "postcss-import": "^14.0.2",
@@ -46,5 +55,7 @@
     "tslib": "^2.3.0",
     "typescript": "^4.3.4"
   },
-  "dependencies": {}
+  "dependencies": {
+    "css-color-converter": "^2.0.0"
+  }
 }
