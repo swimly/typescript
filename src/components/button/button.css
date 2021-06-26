@@ -1,4 +1,3 @@
-.m-button{
-  color: v(color, primary);
+:global .m-button{
   display:flex;
 }

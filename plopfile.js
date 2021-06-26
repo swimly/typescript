@@ -41,6 +41,11 @@ module.exports = plop => {
           type: 'add',
           path: `src/components/${name}/${name}.css.json`,
           templateFile: `src/temp/css.json.hbs`
+        },
+        {
+          type: 'add',
+          path: `src/components/${name}/pug/index.pug`,
+          templateFile: `src/temp/pug.hbs`
         }
       ]
       return actions

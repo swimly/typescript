@@ -15,9 +15,10 @@
     "pull:github": "git pull github master",
     "push": "concurrently \"yarn push:github\" \"yarn push:gitee\"",
     "pull": "concurrently \"yarn pull:github\" \"yarn pull:gitee\"",
-    "dev": "concurrently \"yarn build:dev\" \"yarn doc\""
+    "dev": "concurrently \"yarn build:dev\" \"yarn doc\"",
+    "publish": "npm publish --access public"
   },
-  "theme": "red",
+  "theme": "default",
   "var": true,
   "browserslist": [
     "last 2 version",

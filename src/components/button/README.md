@@ -1,5 +1,1 @@
-# Button
-
-<div id="app">
-
-</div>
+# button
