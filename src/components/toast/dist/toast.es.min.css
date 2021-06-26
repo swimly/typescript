@@ -1,0 +1,3 @@
+.m-button{color:var(--color-primary,red);display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex}
+
+.m-toast{background-color:rgba(0,0,0,.8);color:#fff;display:inline-block;height:32px;padding:0 12px}.m-toast:before{content:"";height:100%;width:0}.m-toast-label,.m-toast:before{display:inline-block;vertical-align:middle}

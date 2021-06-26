@@ -8,6 +8,9 @@ import pug from 'rollup-plugin-pug'
 import pkg from './package.json'
 import preImport from 'postcss-prepend-imports'
 import cssnano from 'cssnano'
+import progress from 'rollup-plugin-progress'
+import image from '@rollup/plugin-image'
+import filesize from 'rollup-plugin-filesize'
 
 const env = process.env.ENV
 const isDev = env === 'development'
@@ -16,6 +19,7 @@ if (!isDev) {
 }
 
 postcssConfig.plugins.forEach((plugin, i) => {
+  if (!plugin) return false;
   if (plugin.postcssPlugin === 'postcss-prepend-imports') {
     postcssConfig.plugins[i] = preImport({
       path: `./src/themes/${pkg.theme}`,
@@ -36,6 +40,9 @@ export default {
     resolve(),
     typescript(),
     pug(),
+    progress(),
+    image(),
+    filesize(),
     postcss({
       extract: true,
       plugins: postcssConfig.plugins

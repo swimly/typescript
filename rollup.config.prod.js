@@ -1,8 +1,5 @@
 import config from './rollup.config'
 import pkg from './package.json'
-import postcss from 'rollup-plugin-postcss'
-const postcssConfig = require('./postcss.config')
-import postcssModule from 'postcss-modules'
 import fs from 'fs'
 
 function getComponents (root) {
@@ -24,26 +21,19 @@ export default () => {
     const isMain = name === pkg.name
     con.input = isMain ? `./index.ts` : `./src/components/${name}/${name}.ts`
     con.output = [{
+      exports: 'auto',
       file: isMain ? `dist/${name}.min.js` : `src/components/${name}/dist/${name}.min.js`,
       format: 'umd',
       name
+    }, {
+      exports: 'auto',
+      file: isMain ? `dist/${name}.cjs.min.js` : `src/components/${name}/dist/${name}.cjs.min.js`,
+      format: 'cjs'
+    }, {
+      exports: 'auto',
+      file: isMain ? `dist/${name}.es.min.js` : `src/components/${name}/dist/${name}.es.min.js`,
+      format: 'es'
     }]
-    let p = []
-    con.plugins.forEach((plugin, i) => {
-      if (plugin.name === 'postcss' && pkg.extra.indexOf(name) >= 0) {
-        p[i] = postcss({
-          extract: false,
-          plugins: postcssConfig.plugins.concat([
-            postcssModule({
-              generateScopedName: "[local]__[hash:base64:5]"
-            })
-          ])
-        })
-      } else {
-        p[i] = plugin
-      }
-    })
-    con.plugins = p
     configs.push(con)
   })
   return configs

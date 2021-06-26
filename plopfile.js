@@ -1,5 +1,3 @@
-const fs = require('fs')
-const path = require('path')
 module.exports = plop => {
   // 创建生成器
   plop.setGenerator('component', {
@@ -16,22 +14,13 @@ module.exports = plop => {
       }
     ],
     // 把基于模板创建的文件，放到指定的目录
-    actions: async (data) => {
+    actions: (data) => {
       const name = data.name
-      // const content = await fs.readFileSync(path.resolve(__dirname,'./index.ts'), {
-      //   encoding: 'utf-8'
-      // })
-      // console.log(content)
       const actions = [
         {
           type: 'add',
           path: `src/components/${name}/${name}.css`,
           templateFile: `src/temp/css.hbs`
-        },
-        {
-          type: 'add',
-          path: `src/components/${name}/${name}.css.json`,
-          templateFile: `src/temp/css.json.hbs`
         },
         {
           type: 'add',
@@ -47,6 +36,11 @@ module.exports = plop => {
           type: 'add',
           path: `src/components/${name}/README.md`,
           templateFile: `src/temp/readme.hbs`
+        },
+        {
+          type: 'add',
+          path: `src/components/${name}/${name}.css.json`,
+          templateFile: `src/temp/css.json.hbs`
         }
       ]
       return actions
