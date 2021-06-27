@@ -5,7 +5,7 @@ module.exports = (isModule, isDev) => {
   return {
     plugins: [
       require('postcss-prepend-imports')({
-        path: `./src/themes/default`,
+        path: `./src/themes/${pkg.theme}`,
         files: ['variable.css']
       }),
       isModule && require('postcss-modules')({

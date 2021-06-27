@@ -33,7 +33,7 @@ export default (name, env) => {
     output.push({
       file: `${outputroot}${dir}`,
       format: fmt,
-      name: pkg.name
+      name: name
     })
   })
   return {
