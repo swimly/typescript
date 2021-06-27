@@ -1,33 +1,30 @@
 import Utils from '../../utils/index'
-import './toast.module.css'
-import tpl from './pug/index.pug'
+import './{{name}}.module.css'
+import style from './{{name}}.module.css.json'
 interface Options {
-  message?: string,
-  icon?: string
+  el?: string | HTMLElement
 }
-class Toast extends Utils{
+class {{properCase name}} extends Utils{
   public el: HTMLElement;
   public opt:Options = {
-    message: '',
-    icon: ''
+    el: ''
   }
   constructor (option: Options) {
-    super(option)
+    super()
     this.init(option)
   }
   public init (option: Options):void {
     this.opt  = Object.assign(this.opt, option)
+    this.el = typeof this.opt.el == 'string' ? document.querySelector(this.opt.el) : this.opt.el as HTMLElement
     this.render()
   }
   public render ():void {
-    this.el = document.body.appendChild(this.parseHtmlToDom(tpl({
-      ...this.opt
-    })))
+    console.log('{{name}}')
   }
 }
 
 export default class {
   static render(option:Options) {
-    return new Toast(option)
+    return new {{properCase name}}(option)
   }
 }

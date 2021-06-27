@@ -1,10 +1,4 @@
-.m-button{
-  display:-webkit-box;
-  display:-webkit-flex;
-  display:-ms-flexbox;
-  display:flex;
-}
-.m-toast_2GUzp{
+:global .m-toast{
   background-color: rgba(0,0,0,0.8);
   display:inline-block;
   height: 32px;
@@ -13,18 +7,17 @@
   position:fixed;
   top: 10%;
   left:50%;
-  -webkit-transform: translateX(-50%);
-          transform: translateX(-50%);
+  transform: translateX(-50%);
   z-index: 1000;
-}
-  .m-toast_2GUzp::before{
+  &::before{
     content:"";
     display:inline-block;
     width:0;
     height:100%;
     vertical-align: middle;
   }
-  .m-toast-label_D3N-i{
+  &-label{
     display:inline-block;
     vertical-align: middle;
   }
+}

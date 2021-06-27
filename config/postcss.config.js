@@ -1,13 +1,14 @@
-const functions = require('./src/utils/postcss.function.js')
-const pkg = require('./package.json')
-module.exports = () => {
+const functions = require('../src/utils/postcss.function.js')
+const pkg = require('../package.json')
+
+module.exports = (isModule, isDev) => {
   return {
     plugins: [
       require('postcss-prepend-imports')({
         path: `./src/themes/default`,
         files: ['variable.css']
       }),
-      require('postcss-modules')({
+      isModule && require('postcss-modules')({
         generateScopedName: "[local]_[hash:base64:5]"
       }),
       require('postcss-import')(),
@@ -27,7 +28,8 @@ module.exports = () => {
       require('postcss-functions')({
         functions
       }),
-      require('postcss-simple-vars')()
+      require('postcss-simple-vars')(),
+      !isDev && require('cssnano')
     ]
   }
 }
