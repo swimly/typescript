@@ -1,3 +1,4 @@
+// import '@babel/polyfill'
 import Utils from './utils'
 import Toast from './components/toast/toast'
 import Button from './components/button/button'

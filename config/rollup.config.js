@@ -3,12 +3,14 @@ import resolve from 'rollup-plugin-node-resolve'
 import postcss from 'rollup-plugin-postcss'
 import {terser} from 'rollup-plugin-terser'
 import typescript from 'rollup-plugin-typescript2'
+import commonjs from 'rollup-plugin-commonjs'
 let postcssConfig = require('./postcss.config')
 import pug from 'rollup-plugin-pug'
 import pkg from '../package.json'
 import progress from 'rollup-plugin-progress'
 import image from '@rollup/plugin-image'
 import filesize from 'rollup-plugin-filesize'
+import babel from 'rollup-plugin-babel'
 import fs from 'fs'
 
 export default (name, env) => {
@@ -42,16 +44,43 @@ export default (name, env) => {
     plugins: [
       json(),
       resolve(),
-      typescript(),
+      commonjs(),
+      typescript({
+        exclude:['node_modules/**']
+      }),
       pug(),
       image(),
       postcss({
         extract: !isModule,
         plugins: postcssPlugins
       }),
+      babel({
+        exclude: [/\/core-js\//],
+        runtimeHelpers: true,
+        extensions: ['.js', '.jsx', '.es6', '.es', '.mjs', '.vue', '.ts'],
+        presets: [
+          ["@babel/env", {
+            modules: false,
+            useBuiltIns: 'usage',
+            corejs: 2,
+            forceAllTransforms: true
+          }]
+        ],
+        plugins: [
+          "babel-plugin-transform-object-assign",
+          "@babel/plugin-proposal-object-rest-spread"
+        ]
+      }),
       !isDev && filesize(),
       !isDev && progress(),
       !isDev && terser()
+    ],
+    watch: {
+      chokidar: {
+        useFsEvents: false
+      }
+    },
+    external: [
     ]
   }
 }

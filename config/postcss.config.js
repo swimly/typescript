@@ -23,7 +23,11 @@ module.exports = (isModule, isDev) => {
       }),
       require('postcss-color-mod-function')(),
       require('autoprefixer')({
-        overrideBrowserslist: pkg.browserslist
+        overrideBrowserslist: [
+          "last 2 version",
+          ">1%",
+          "ios 7"
+        ]
       }),
       require('postcss-functions')({
         functions
