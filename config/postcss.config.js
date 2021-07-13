@@ -9,11 +9,11 @@ module.exports = (isModule, isDev) => {
         files: ['variable.css']
       }),
       isModule && require('postcss-modules')({
-        generateScopedName: "[local]_[hash:base64:5]"
+        generateScopedName: pkg.cssmodule ? pkg.prefix + "[local]_[hash:base64:5]" : pkg.prefix + "[local]"
       }),
       require('postcss-import')(),
       require('postcss-nested')(),
-      pkg.px2rem && require('postcss-pxtorem')({
+      require('postcss-pxtorem')({
         rootValue: 20,
         propList: ['*', '!border'],
         replace: true,

@@ -32,11 +32,6 @@ module.exports = plop => {
           path: `../src/components/${name}/${name}.css`,
           templateFile: `../src/temp/css.hbs`
         },
-        {
-          type: 'add',
-          path: `../src/components/${name}/${name}.story.mdx`,
-          templateFile: `../src/temp/story.hbs`
-        },
         isModule ? {
           type: 'add',
           path: `../src/components/${name}/${name}.ts`,

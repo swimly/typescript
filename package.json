@@ -4,8 +4,8 @@
   "description": "",
   "main": "dist/mui.min.js",
   "scripts": {
-    "build:dev": "cross-env ENV=development rollup -wc ./config/rollup.config.dev.js",
-    "build:prod": "cross-env ENV=producrion rollup -c ./config/rollup.config.prod.js",
+    "dev": "cross-env ENV=development rollup -wc ./config/rollup.config.dev.js",
+    "build": "cross-env ENV=producrion rollup -wc ./config/rollup.config.prod.js",
     "doc": "start-storybook -p 6006",
     "build:doc": "build-storybook",
     "generate": "plop --plopfile ./config/plopfile.js",
@@ -15,12 +15,13 @@
     "pull:github": "git pull github master",
     "push": "concurrently \"yarn push:github\" \"yarn push:gitee\"",
     "pull": "concurrently \"yarn pull:github\" \"yarn pull:gitee\"",
-    "dev": "concurrently \"yarn build:dev\" \"yarn doc\"",
     "publish": "npm publish --access public"
   },
   "theme": "default",
   "var": true,
   "keywords": [],
+  "prefix": "v-",
+  "cssmodule": true,
   "extra": [
     "toast"
   ],
@@ -36,10 +37,6 @@
     "@babel/runtime-corejs2": "^7.14.6",
     "@babel/runtime-corejs3": "^7.14.7",
     "@rollup/plugin-image": "^2.0.6",
-    "@storybook/addon-actions": "^6.3.0",
-    "@storybook/addon-essentials": "^6.3.0",
-    "@storybook/addon-links": "^6.3.0",
-    "@storybook/html": "^6.3.0",
     "autoprefixer": "^10.2.6",
     "babel-loader": "^8.2.2",
     "babel-plugin-transform-object-assign": "^6.22.0",

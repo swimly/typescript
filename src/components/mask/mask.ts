@@ -1,15 +1,13 @@
 import Utils from '../../utils/index'
-import './toast.module.css'
-import tpl from './pug/index.pug'
+import './mask.module.css'
+import style from './mask.module.css.json'
 interface Options {
-  message?: string,
-  icon?: string
+  el?: string | HTMLElement
 }
-class Toast extends Utils{
+class Mask extends Utils{
   public el: HTMLElement;
   public opt:Options = {
-    message: '',
-    icon: ''
+    el: ''
   }
   constructor (option: Options) {
     super(option)
@@ -17,17 +15,16 @@ class Toast extends Utils{
   }
   public init (option: Options):void {
     this.opt  = Object.assign(this.opt, option)
+    this.el = typeof this.opt.el == 'string' ? document.querySelector(this.opt.el) : this.opt.el as HTMLElement
     this.render()
   }
   public render ():void {
-    this.el = document.body.appendChild(this.parseHtmlToDom(tpl({
-      ...this.opt
-    })))
+    console.log('mask', style)
   }
 }
 
 export default class {
   static render(option:Options) {
-    return new Toast(option)
+    return new Mask(option)
   }
 }

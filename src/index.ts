@@ -1,12 +1,8 @@
-// import '@babel/polyfill'
-import Utils from './utils'
-import Toast from './components/toast/toast'
+
 import Button from './components/button/button'
+import Mask from './components/mask/mask'
 
 export default class {
-  constructor (option) {
-    return new Utils(option)
-  }
-  public static Toast = Toast
-  public static Button = Button
+  public static button = Button
+  public static mask = Mask
 }
