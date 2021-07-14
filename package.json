@@ -21,7 +21,7 @@
   "var": true,
   "keywords": [],
   "prefix": "v-",
-  "cssmodule": true,
+  "cssmodule": false,
   "extra": [
     "toast"
   ],

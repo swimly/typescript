@@ -1,0 +1,170 @@
+{
+  "panelPadding": [
+    24,
+    32,
+    40
+  ],
+  "pagePadding": [
+    24,
+    32,
+    40
+  ],
+  "margin": [
+    4,
+    8,
+    12,
+    16,
+    20,
+    24,
+    28,
+    32,
+    40,
+    48,
+    56,
+    64
+  ],
+  "buttonSize": [
+    48,
+    56,
+    64,
+    72,
+    80,
+    88,
+    96
+  ],
+  "buttonType": [
+    "primary",
+    "success",
+    "warning",
+    "danger"
+  ],
+  "checkboxSize": [
+    32,
+    48
+  ],
+  "checkboxType": [
+    "primary",
+    "success",
+    "warning",
+    "danger"
+  ],
+  "radioSize": [
+    32,
+    48
+  ],
+  "radioType": [
+    "primary",
+    "success",
+    "warning",
+    "danger"
+  ],
+  "switchSize": [
+    36,
+    40,
+    44
+  ],
+  "switchType": [
+    "primary",
+    "success",
+    "warning",
+    "danger"
+  ],
+  "badgeType": [
+    "primary",
+    "success",
+    "danger"
+  ],
+  "tag": {
+    "size": [24,28,32,40,48,56,64,72,80,88,96,104],
+    "type": ["primary","warning","success","danger","info","state0","state1","state2","state3","state4","state5"]
+  },
+  "fettleSize": [
+    32,
+    40,
+    48
+  ],
+  "fettleType": [
+    "primary",
+    "danger"
+  ],
+  "textSize": [
+    24,
+    28,
+    30,
+    32,
+    36,
+    40,
+    44,
+    48,
+    52,
+    56,
+    60
+  ],
+  "textType": [
+    {
+      "name": "white",
+      "value": "text"
+    },
+    {
+      "name": "default",
+      "value": "text"
+    },
+    {
+      "name": "regular",
+      "value": "text"
+    },
+    {
+      "name": "secondary",
+      "value": "text"
+    },
+    {
+      "name": "placeholder",
+      "value": "text"
+    },
+    {
+      "name": "primary",
+      "value": "color"
+    },
+    {
+      "name": "warning",
+      "value": "color"
+    },
+    {
+      "name": "success",
+      "value": "color"
+    },
+    {
+      "name": "danger",
+      "value": "color"
+    },
+    {
+      "name": "state0",
+      "value": "color"
+    },
+    {
+      "name": "state1",
+      "value": "color"
+    },
+    {
+      "name": "state2",
+      "value": "color"
+    },
+    {
+      "name": "state3",
+      "value": "color"
+    },
+    {
+      "name": "state4",
+      "value": "color"
+    },
+    {
+      "name": "state5",
+      "value": "color"
+    }
+  ],
+  "inputSize": [24, 28, 32],
+  "rateType": ["primary", "warning", "success", "danger"],
+  "form": {
+    "size": [96, 112]
+  }
+}

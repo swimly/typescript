@@ -1,6 +1,6 @@
-const pkg = require('../../package.json')
+import pkg from '../../package.json'
 const isVar = pkg.var
-module.exports = {
+export default {
   v: (string) => {
     const arr = string.split('-')
     const name = arr[0]

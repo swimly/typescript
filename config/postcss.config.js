@@ -1,19 +1,34 @@
-const functions = require('../src/utils/postcss.function.js')
-const pkg = require('../package.json')
+import functions from '../src/utils/postcss.function'
+import mixins from '../src/mixins/index'
+import pkg from '../package.json'
+import postcssMixins from 'postcss-mixins'
+import prependImport from 'postcss-prepend-imports'
+import postcssModule from 'postcss-modules'
+import postcssImport from 'postcss-import'
+import nested from 'postcss-nested'
+import pxtorem from 'postcss-pxtorem'
+import autoprefixer from 'autoprefixer'
+import postcssFunction from 'postcss-functions'
+import vars from 'postcss-simple-vars'
+import cssnano from 'cssnano'
+import colorFunction from 'postcss-color-mod-function'
 
-module.exports = (isModule, isDev) => {
+export default (isModule, isDev) => {
   return {
     plugins: [
-      require('postcss-prepend-imports')({
+      postcssMixins({
+        mixins
+      }),
+      prependImport({
         path: `./src/themes/${pkg.theme}`,
         files: ['variable.css']
       }),
-      isModule && require('postcss-modules')({
+      postcssModule({
         generateScopedName: pkg.cssmodule ? pkg.prefix + "[local]_[hash:base64:5]" : pkg.prefix + "[local]"
       }),
-      require('postcss-import')(),
-      require('postcss-nested')(),
-      require('postcss-pxtorem')({
+      postcssImport(),
+      nested(),
+      pxtorem({
         rootValue: 20,
         propList: ['*', '!border'],
         replace: true,
@@ -21,19 +36,19 @@ module.exports = (isModule, isDev) => {
         minPixelValue: 0,
         exclude: /node_modules/i
       }),
-      require('postcss-color-mod-function')(),
-      require('autoprefixer')({
+      colorFunction(),
+      autoprefixer({
         overrideBrowserslist: [
           "last 2 version",
           ">1%",
           "ios 7"
         ]
       }),
-      require('postcss-functions')({
+      postcssFunction({
         functions
       }),
-      require('postcss-simple-vars')(),
-      !isDev && require('cssnano')
+      vars(),
+      !isDev && cssnano()
     ]
   }
 }

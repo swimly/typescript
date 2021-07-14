@@ -1,3 +1,107 @@
 .button{
-  display:block;
+  display:flex;
+  flex-direction: row;
+  align-items:center;
+  justify-content: center;
+  position:relative;
+  -webkit-tap-highlight-color: transparent;
+  height: 44px;
+  font-size: 16px;
+  color: v(text-default);
+  text-decoration: none;
+  font-weight: normal;
+  vertical-align: middle;
+  cursor: pointer;
+  &::before,
+  &::after{
+    content:"";
+    display:block;
+    width:200%;
+    height:200%;
+    position: absolute;
+    box-sizing: border-box;
+    left:0;
+    top:0;
+    transform-origin: 0 0;
+    transform:scale(0.5);
+    border: 1px solid v(border-default);
+    z-index:10;
+    border-radius: inherit;
+  }
+  &::before{
+    display:none;
+    width:auto;
+    height:auto;
+    top:0;
+    left:0;
+    bottom:0;
+    right:0;
+    z-index:11;
+    transform: translate(0,0) scale(1);
+  }
+  &::after{
+    border:none;
+    background-color: v(border-default);
+  }
+  &-label{
+    position:relative;
+    z-index:11;
+  }
+  &-icon{
+    color:inherit;
+    position:relative;
+    z-index:11;
+    &:not(:empty){
+      margin-right: 4px;
+    }
+    .v-icon{
+      color:inherit;
+    }
+  }
+  &[conner='1']{
+    border-radius: 0.2rem;
+  }
+  &[conner='2']{
+    border-radius: 44px;
+  }
+  &[inline='1']{
+    display:inline-flex;
+    padding: 0 22px;
+  }
+  &[loading='1']{
+    .v-button-icon{
+      animation: buttonLoading 1s linear infinite;
+    }
+    &::before{
+      display:block;
+      z-index:12;
+      background-color: v(background-white);
+      opacity: 0.4;
+      border:none;
+    }
+  }
+  &[outline='1']{
+    &::after{
+      background-color: v(background-white);
+    }
+    &::before{
+      display:block;
+    }
+  }
+  &[light="1"]{
+    &::before{
+      display:none;
+    }
+  }
+  @mixin buttonSize {}
+  @mixin buttonType {}
+}
+
+@keyframes buttonLoading {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }

@@ -1,3 +1,3 @@
-- 基础
+- [更新日志](docs/update.md)
+- 通用
   - [Button 按钮](src/components/button/README.md)
-  - [Toast 提示](src/components/toast/README.md)

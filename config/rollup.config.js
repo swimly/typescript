@@ -4,7 +4,7 @@ import postcss from 'rollup-plugin-postcss'
 import {terser} from 'rollup-plugin-terser'
 import typescript from 'rollup-plugin-typescript2'
 import commonjs from 'rollup-plugin-commonjs'
-let postcssConfig = require('./postcss.config')
+import postcssConfig from './postcss.config'
 import pug from 'rollup-plugin-pug'
 import pkg from '../package.json'
 import progress from 'rollup-plugin-progress'
